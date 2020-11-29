@@ -1,0 +1,80 @@
+/* Fekete háttér a felső navigációs sávhoz */
+.felso-navigacios-sav {
+	/* background-color: rgb(240, 240, 240); */
+	background-color: var(--sajat-hatter-szin);
+	overflow: hidden;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	min-height: 55px;
+	padding-left: calc(50vw - 352px);
+}
+
+/* A navigációs sávban található linkek stílusának beállítása */
+.felso-navigacios-sav a {
+	float: left;
+	display: block;
+	text-align: center;
+	width: 172px;
+	height: 27px;
+	color: var(--sajat-szoveg-szin);
+	padding: 14px 0px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+/* Ha az egeret a navigációs sáv egy eleme fölé viszem, változzon meg a színe */
+.felso-navigacios-sav a:hover {
+	background-color: var(--sajat-kijeloles-szin);
+	color: var(--sajat-szoveg-szin);
+}
+
+/* Az aktiv oldalhoz tartozó link kiemelése a navigációs sávben */
+.felso-navigacios-sav a.aktiv {
+	background-color: var(--sajat-kijeloles-szin);
+	/* color: white; */
+	color: var(--sajat-hatter-szin);
+}
+
+/* A link elrejtése, ami kis kijelzőn kinyitja és becsukja a navigációs sávot */
+.felso-navigacios-sav .ikon {
+	display: none;
+}
+
+/* Ha a kijelző maximum 710 pixel széles, elrejtjük az összes navigációs elemet kivéve azt, amelyik aktív. 
+   Ebben az esetben kell megjelennie az elemeket megmutató (és elrejtő) 3 vonalas ikonnak is.*/
+@media screen and (max-width: 710px) {
+	.felso-navigacios-sav a.aktiv {
+		width: calc(100vw - 110px - 17px);
+		padding-left: 55px;
+		background-color: var(--sajat-hatter-szin);
+		color: var(--sajat-szoveg-szin);
+	}
+	.felso-navigacios-sav a:not(.aktiv) {
+		display: none;
+	}
+	.felso-navigacios-sav a.ikon {
+		float: right;
+		display: block;
+		width: 55px;
+	}
+
+	/* A "reszponziv" osztály akkor lesz a navigációs sávhoz hozzáaadva, ha a felhasználó rányom a 3 vonalas gombra.
+	   Ebben az esetben megjelenítjük az összes elemet, de egymás alatt és nem egymás mellett, mint nagyobb széleség esetén. */
+	.felso-navigacios-sav.nyitott a.aktiv {
+		padding-left: 0px;
+		background-color: var(--sajat-kijeloles-szin);
+		color: var(--sajat-hatter-szin);
+	}
+	.felso-navigacios-sav.nyitott a.ikon {
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 55px;
+	}
+	.felso-navigacios-sav.nyitott a {
+		width: 100vw;
+		float: none;
+		display: block;
+	}
+}
